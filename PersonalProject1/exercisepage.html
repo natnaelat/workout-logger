@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Tracker</title>
+    <link rel="stylesheet" href="stylesExercisepage.css">
+    <script src="https://kit.fontawesome.com/e29adbe2a0.js" crossorigin="anonymous"></script>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise Manager</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                background-color: #000000;
+                text-align: center;
+            }
+            h1, h2 {
+                text-align: center;
+            }
+            form {
+                display: inline-block;
+                margin-bottom: 20px;
+            }
+            label {
+                display: block;
+                margin: 10px 1px;
+                width: 100%;
+                padding: 5px;
+            }
+            input {
+                display: block;
+                margin: 10px 0;
+                width: 100%;
+                padding: 5px;
+            }
+            button {
+                display: block;
+                margin: 10px 4px;
+                width: 100%;
+                padding: 5px;
+            }
+            #searchBar {
+                width: 50%;
+                margin: 20px auto; /* Center the search bar */
+                padding: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px auto;
+            }
+            th, td {
+                padding: 10px;
+                text-align: center;
+                border: 1px solid #ddd;
+                cursor: pointer;
+            }
+            th {
+                background-color: #1686c2;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <h1>Exercise Manager</h1>
+    
+        <form id="exerciseForm">
+            <label for="exercise">Add Exercise</label>
+            <input type="text" id="exercise" name="exercise" required>
+            <button type="submit">Add Exercise</button>
+        </form>
+    
+        <input type="text" id="searchBar" placeholder="Search exercises..." onkeyup="searchExercise()">
+    
+        <h2>Exercise List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Exercise Name</th>
+                </tr>
+            </thead>
+            <tbody id="exerciseTableBody">
+                <!-- Exercises will appear here -->
+            </tbody>
+        </table>
+    
+        <script>
+            document.getElementById('exerciseForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+    
+                const exerciseName = document.getElementById('exercise').value;
+                const tableBody = document.getElementById('exerciseTableBody');
+    
+                // Create a new row for the added exercise
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `<td>${exerciseName}</td>`;
+    
+                // Add click event to go to the workout tracker
+                newRow.addEventListener('click', function() {
+                    window.location.href = `Log.html?exercise=${encodeURIComponent(exerciseName)}`;
+                });
+    
+                tableBody.appendChild(newRow);
+    
+                // Clear form
+                document.getElementById('exerciseForm').reset();
+            });
+    
+            // Search exercise function
+            function searchExercise() {
+                const input = document.getElementById('searchBar').value.toLowerCase();
+                const rows = document.getElementById('exerciseTableBody').getElementsByTagName('tr');
+                
+                for (let i = 0; i < rows.length; i++) {
+                    const exercise = rows[i].getElementsByTagName('td')[0];
+                    if (exercise) {
+                        const exerciseName = exercise.textContent || exercise.innerText;
+                        rows[i].style.display = exerciseName.toLowerCase().indexOf(input) > -1 ? "" : "none";
+                    }
+                }
+            }
+        </script>
+    
+    </body>
+    </html>
+    
