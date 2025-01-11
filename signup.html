@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Tracker</title>
+    <link rel="stylesheet" href="stylesSignup.css">
+    <!-- <script type="module" src="signup.js" defer></script> -->
+    <script src="https://kit.fontawesome.com/e29adbe2a0.js" crossorigin="anonymous"></script>
+</head>
+
+    <body>
+            <nav class="navbar">
+                <div class="navbar__container">
+                    <a href="/index.html" id="navbar__logo"><i class="fas fa-dumbbell"></i>Workout Tracker</a>
+                    <div class="navbar__toggle" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <ul class="navbar__menu">
+                        <li class="navbar__btn">
+                            <a href="/signin.html" class="button">
+                                Sign In
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <form action="action_page.php" method="post">
+                <div class="imgcontainer">
+                  <img src="images/avatar.svg" alt="Avatar" class="avatar">
+                </div>
+              
+                <div class="container">
+                  <label for="uname"><b>Email</b></label>
+                  <input type="text" placeholder="Enter Email" id="email" name="uname" required>
+              
+                  <label for="psw"><b>Password</b></label>
+                  <input type="password" placeholder="Enter Password" id="password" name="psw" required>
+
+                  <!-- <label for="psw"><b>Confirm Password</b></label>
+                  <input type="password" placeholder="Enter Password" name="psw" required> -->
+
+                  <button id="submit" type="submit">Create Account</button>
+                  <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                  </label>
+                </div>
+              
+                <div class="container" style="background-color:#141414">
+                  <button type="button" class="cancelbtn"><a href="/index.html">Cancel</a></button>
+                </div>
+              </form>
+              <script src="signup.js"></script>
+            </body>
+        </html> 
