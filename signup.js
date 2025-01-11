@@ -18,8 +18,12 @@ async function signUp(event) {
       password,
       attributes: { email }, // Specify email attribute
     });
+
     console.log(user); // Log user details for debugging
     alert("Signup successful! Please check your email for verification.");
+
+    // Redirect to exercise page after successful signup
+    window.location.href = "exercisepage.html"; // Redirect to the exercise page
   } catch (error) {
     console.error(error);
     alert("Error signing up: " + error.message);
