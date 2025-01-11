@@ -6,9 +6,16 @@ import awsconfig from "./aws-exports";
 Auth.configure(awsconfig);
 
 // Function to handle user login
-async function signIn() {
+async function signIn(event) {
+  event.preventDefault(); // Prevent form submission
+
   const email = document.getElementById("email").value; // Get the email input value
   const password = document.getElementById("password").value; // Get the password input value
+
+  // Show loading indicator
+  const submitButton = document.getElementById("submit");
+  submitButton.innerText = "Logging in...";
+  submitButton.disabled = true;
 
   try {
     // Use AWS Amplify's Auth.signIn method to log in the user
@@ -21,6 +28,10 @@ async function signIn() {
     // Handle errors (e.g., incorrect username/password)
     console.error("Error logging in:", error);
     alert("Error logging in. Please check your credentials and try again.");
+  } finally {
+    // Reset the button state
+    submitButton.innerText = "Log In";
+    submitButton.disabled = false;
   }
 }
 
