@@ -1,18 +1,32 @@
-    // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-  import { }
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+// Import the necessary modules from AWS Amplify
+import { Auth } from "aws-amplify";
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyA26VGtGX0BB50tNqyZPkqsSP4a8NnhaJ0",
-    authDomain: "sign-fd366.firebaseapp.com",
-    projectId: "sign-fd366",
-    storageBucket: "sign-fd366.appspot.com",
-    messagingSenderId: "22945106494",
-    appId: "1:22945106494:web:29b7637229851e69be5f6f"
-  };
+// Configure AWS Amplify
+import awsconfig from "./aws-exports"; // This should be your generated aws-exports.js file
+Auth.configure(awsconfig);
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+// Function to handle user signup
+async function signUp() {
+  const username = document.getElementById("username").value; // Get username from input field
+  const password = document.getElementById("password").value; // Get password from input field
+  const email = document.getElementById("email").value; // Get email from input field
+
+  try {
+    const { user } = await Auth.signUp({
+      username, // Username
+      password, // Password
+      attributes: {
+        email, // Email
+        // You can add more attributes like phone_number, given_name, etc.
+      },
+    });
+    console.log(user); // You can log or alert the user for successful signup
+    alert("Signup successful!");
+  } catch (error) {
+    console.error(error);
+    alert("Error signing up: " + error.message);
+  }
+}
+
+// Event listener for the signup form submission
+document.getElementById("signupButton").addEventListener("click", signUp);
