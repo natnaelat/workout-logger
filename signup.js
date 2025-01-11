@@ -11,6 +11,13 @@ async function signUp(event) {
 
   const email = document.getElementById("email").value; // Get email from input field
   const password = document.getElementById("password").value; // Get password from input field
+  const confirmPassword = document.getElementById("confirmPassword").value; // Get confirm password from input field
+
+  // Check if password and confirm password match
+  if (password !== confirmPassword) {
+    alert("Passwords do not match. Please check and try again.");
+    return; // Stop the signup process if passwords don't match
+  }
 
   try {
     const { user } = await Auth.signUp({
