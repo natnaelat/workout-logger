@@ -4,52 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workout Tracker</title>
+    <title>Workout Tracker - Sign In</title>
     <link rel="stylesheet" href="stylesSignin.css">
     <script src="https://kit.fontawesome.com/e29adbe2a0.js" crossorigin="anonymous"></script>
-    <script type="module" src="login.js" defer></script>
+    <!-- Make sure to load signin.js and set type="module" so ES6 import/export works -->
+    <script type="module" src="signin.js" defer></script>
 </head>
 
-    <body>
-            <nav class="navbar">
-                <div class="navbar__container">
-                    <a href="/index.html" id="navbar__logo"><i class="fas fa-dumbbell"></i>Workout Tracker</a>
-                    <div class="navbar__toggle" id="mobile-menu">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </div>
-                    <ul class="navbar__menu">
-                        <li class="navbar__btn">
-                            <a href="/signup.html" class="button">
-                                Sign Up
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            </body>
-            <form action="action_page.php" method="post">
-                <div class="imgcontainer">
-                  <img src="images/avatar.svg" alt="Avatar" class="avatar">
-                </div>
-              
-                <div class="container">
-                  <label for="uname"><b>Email</b></label>
-                  <input type="text" placeholder="Enter Email" name="uname" required>
-              
-                  <label for="psw"><b>Password</b></label>
-                  <input type="password" placeholder="Enter Password" name="psw" required>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/index.html" id="navbar__logo"><i class="fas fa-dumbbell"></i>Workout Tracker</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__btn">
+                    <a href="/signup.html" class="button">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-                  <button type="submit">Log In</button>
-                  <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                  </label>
-                </div>
-              
-                <div class="container" style="background-color:#141414">
-                  <button type="button" class="cancelbtn"><a href="/index.html">Cancel</a></button>
-                  <span class="psw"><a href="#">Forgot password?</a></span>
-                </div>
-              </form>
-        </html> 
+    <!-- Removed the action attribute and the method post -->
+    <form id="signinForm" onsubmit="event.preventDefault();">
+        <div class="imgcontainer">
+            <img src="images/avatar.svg" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="email"><b>Email</b></label>
+            <input type="text" id="email" placeholder="Enter Email" required>
+
+            <label for="password"><b>Password</b></label>
+            <input type="password" id="password" placeholder="Enter Password" required>
+
+            <button type="button" id="submit">Log In</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#141414">
+            <button type="button" class="cancelbtn"><a href="/index.html">Cancel</a></button>
+            <span class="psw"><a href="#">Forgot password?</a></span>
+        </div>
+    </form>
+</body>
+
+</html>

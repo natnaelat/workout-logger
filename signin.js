@@ -1,46 +1,28 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// Import Amplify and Auth from the AWS Amplify library
+import { Auth } from "aws-amplify";
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCLEdJ2626LZDobRRhrnyZ4A6Mq8dHZB_s",
-  authDomain: "signup-424bf.firebaseapp.com",
-  projectId: "signup-424bf",
-  storageBucket: "signup-424bf.appspot.com",
-  messagingSenderId: "834702244593",
-  appId: "1:834702244593:web:36f5067a9b13c8f0fa8750",
-};
+// Configure Amplify (ensure aws-exports.js is correctly imported)
+import awsconfig from "./aws-exports";
+Auth.configure(awsconfig);
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+// Function to handle user login
+async function signIn() {
+  const email = document.getElementById("email").value; // Get the email input value
+  const password = document.getElementById("password").value; // Get the password input value
 
-const submit = document.getElementById("submit");
-submit.addEventListener("click", function (event) {
-  event.preventDefault();
+  try {
+    // Use AWS Amplify's Auth.signIn method to log in the user
+    const user = await Auth.signIn(email, password);
+    console.log("Successfully logged in:", user);
 
-  //input
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+    // Redirect the user to the dashboard or home page after successful login
+    window.location.href = "/dashboard.html"; // Change this URL to your desired destination
+  } catch (error) {
+    // Handle errors (e.g., incorrect username/password)
+    console.error("Error logging in:", error);
+    alert("Error logging in. Please check your credentials and try again.");
+  }
+}
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed up
-      const user = userCredential.user;
-      alert("Creating Account...");
-      window.loaction.href = "main.html";
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(errorMessage);
-      // ..
-    });
-});
+// Attach the sign-in function to the login button click event
+document.getElementById("submit").addEventListener("click", signIn);
