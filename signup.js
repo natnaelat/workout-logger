@@ -1,10 +1,6 @@
-// Import AWS Amplify
 import { Auth } from "aws-amplify";
+import awsconfig from "./src/aws-exports"; // Adjust path if necessary
 
-// Import your Amplify configuration
-import awsconfig from "./aws-exports"; // Adjust path as needed
-
-// Configure AWS Amplify
 Auth.configure(awsconfig);
 
 async function signUp(event) {
@@ -14,25 +10,36 @@ async function signUp(event) {
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirmPassword").value;
 
-  console.log("Email: ", email);
-  console.log("Password: ", password);
-  console.log("Confirm Password: ", confirmPassword);
+  // Validate the input
+  if (!email || !password || !confirmPassword) {
+    alert("Please fill in all fields.");
+    return;
+  }
 
   if (password !== confirmPassword) {
     alert("Passwords do not match.");
     return;
   }
 
+  // Password validation (optional)
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/; // At least 6 characters, with letters and numbers
+  if (!passwordRegex.test(password)) {
+    alert(
+      "Password must be at least 6 characters and contain both letters and numbers."
+    );
+    return;
+  }
+
   try {
     const { user } = await Auth.signUp({
-      username: email,
+      username: email, // Use email as the username
       password,
-      attributes: { email },
+      attributes: { email }, // You can add other attributes if needed
     });
 
-    console.log(user); // Check if the user is being created
+    console.log(user); // Log the user object for debugging
     alert("Signup successful!");
-    window.location.href = "exercisepage.html";
+    window.location.href = "exercisepage.html"; // Redirect after successful signup
   } catch (error) {
     console.error("Error signing up: ", error);
     alert("Error signing up: " + error.message);
