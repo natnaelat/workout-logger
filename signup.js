@@ -7,34 +7,34 @@ import awsconfig from "./aws-exports"; // Adjust path as needed
 // Configure AWS Amplify
 Auth.configure(awsconfig);
 
-// Function to handle user signup
 async function signUp(event) {
-  event.preventDefault(); // Prevent default form submission
+  event.preventDefault(); // Prevent form submission
 
-  const email = document.getElementById("email").value; // Get email from input field
-  const password = document.getElementById("password").value; // Get password from input field
-  const confirmPassword = document.getElementById("confirmPassword").value; // Get confirm password from input field
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
 
-  // Check if password and confirm password match
+  console.log("Email: ", email);
+  console.log("Password: ", password);
+  console.log("Confirm Password: ", confirmPassword);
+
   if (password !== confirmPassword) {
-    alert("Passwords do not match. Please check and try again.");
-    return; // Stop the signup process if passwords don't match
+    alert("Passwords do not match.");
+    return;
   }
 
   try {
     const { user } = await Auth.signUp({
-      username: email, // Use email as the username (Cognito requires a unique username)
+      username: email,
       password,
-      attributes: { email }, // Specify email attribute
+      attributes: { email },
     });
 
-    console.log(user); // Log user details for debugging
-    alert("Signup successful! Please check your email for verification.");
-
-    // Redirect to exercise page after successful signup
-    window.location.href = "exercisepage.html"; // Redirect to the exercise page
+    console.log(user); // Check if the user is being created
+    alert("Signup successful!");
+    window.location.href = "exercisepage.html";
   } catch (error) {
-    console.error(error);
+    console.error("Error signing up: ", error);
     alert("Error signing up: " + error.message);
   }
 }
