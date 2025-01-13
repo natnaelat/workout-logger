@@ -2,6 +2,8 @@ import { AuthProvider } from "react-oidc-context";
 import ReactDOM from "react-dom/client"; // Ensure this is imported
 import React from "react";
 import App from "./App"; // Import your App component
+import "./index.css"; // Import the CSS file
+
 import { UserManager } from "oidc-client-ts"; // Import the UserManager from oidc-client-ts
 
 const cognitoAuthConfig = {
