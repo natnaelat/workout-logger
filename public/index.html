@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Tracker</title>
-    <link rel="stylesheet" href="src/index.css"> <!-- Correct if index.css is in the same directory -->
     <script src="https://kit.fontawesome.com/e29adbe2a0.js" crossorigin="anonymous"></script>
 </head>
 
@@ -23,17 +22,15 @@
                     <a href="/" class="navbar__links" id="home-link">Home</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="#" class="navbar__links" id="logs-link">Logs</a> <!-- Modified link -->
+                    <a href="#" class="navbar__links" id="logs-link">Logs</a>
                 </li>
                 <li class="navbar__btn">
-                    <!-- Sign In Button with the class 'button' and ID 'signInBtn' -->
                     <button class="button" id="signInBtn">Sign In</button>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Below the Bar -->
     <div class="main">
         <div class="main__container">
             <div class="main__content">
@@ -42,12 +39,11 @@
                 <button class="main__btn"><a href="/signup.html">Get Started</a></button>
             </div>
             <div class="main__img--container">
-                <img src="images/pic1.svg" alt="pic" id="main__img"> <!-- Correct image path -->
+                <img src="/images/pic1.svg" alt="pic" id="main__img">
             </div>
         </div>
     </div>
 
-    <!-- Services Section -->
     <div class="services">
         <h1>Change Your Life Today</h1>
         <div class="services__container">
@@ -64,16 +60,11 @@
         </div>
     </div>
 
-    <!-- User Info -->
-    <div id="userInfo"></div> <!-- Dynamically show user info after sign-in -->
+    <div id="userInfo"></div>
+    <div id="content-container"></div>
 
-    <!-- Content Container for dynamic loading -->
-    <div id="content-container"></div> <!-- Content will be injected here dynamically -->
-
-    <!-- Sign-In Script -->
     <script>
         document.getElementById("signInBtn").addEventListener("click", () => {
-            // Ensure `userManager` is correctly initialized in your index.js
             userManager.signinRedirect();
         });
     </script>
