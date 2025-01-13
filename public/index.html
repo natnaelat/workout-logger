@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Tracker</title>
-    <!-- Updated to remove PUBLIC_URL and use relative path -->
     <link rel="stylesheet" href="index.css"> <!-- Correct if index.css is in the same directory -->
     <script src="https://kit.fontawesome.com/e29adbe2a0.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script> <!-- Reference to your custom JS file for dynamic content loading -->
@@ -32,9 +31,10 @@
                     </a>
                 </li>
                 <li class="navbar__btn">
-                    <a href="/exercisepage.html" class="button" id="exercise-link">
-                        Exercise Page
-                    </a>
+                    <!-- Sign-in button, will be handled via JavaScript -->
+                    <button class="button" id="signInBtn">
+                        Sign In
+                    </button>
                 </li>
             </ul>
         </div>
@@ -71,16 +71,17 @@
         </div>
     </div>
 
+    <!-- User Info -->
+    <div id="userInfo">
+        <!-- Dynamically show user info after sign-in -->
+    </div>
+
     <!-- Content Container for dynamic loading -->
     <div id="content-container">
         <!-- Content will be injected here dynamically -->
     </div>
 
-    <!-- React app root div (remove if not using React) -->
-    <!-- <div id="root"></div> -->
-
-    <!-- This script is for React app if you use it, else remove it -->
-    <script src="app.js"></script> <!-- Reference to your React app if you're using it -->
+    <script src="script.js"></script> <!-- Reference to your script.js -->
 </body>
 
 </html>
