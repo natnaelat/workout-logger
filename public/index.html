@@ -26,6 +26,7 @@
                     <a href="#" class="navbar__links" id="logs-link">Logs</a> <!-- Modified link -->
                 </li>
                 <li class="navbar__btn">
+                    <!-- Sign In Button with the class 'button' and ID 'signInBtn' -->
                     <button class="button" id="signInBtn">Sign In</button>
                 </li>
             </ul>
@@ -69,6 +70,13 @@
     <!-- Content Container for dynamic loading -->
     <div id="content-container"></div> <!-- Content will be injected here dynamically -->
 
+    <!-- Sign-In Script -->
+    <script>
+        document.getElementById("signInBtn").addEventListener("click", () => {
+            // Ensure `userManager` is correctly initialized in your index.js
+            userManager.signinRedirect();
+        });
+    </script>
 </body>
 
 </html>
