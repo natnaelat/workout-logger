@@ -7,7 +7,7 @@
     <title>Workout Tracker</title>
     <link rel="stylesheet" href="index.css"> <!-- Correct if index.css is in the same directory -->
     <script src="https://kit.fontawesome.com/e29adbe2a0.js" crossorigin="anonymous"></script>
-    <script src="script.js" defer></script> <!-- Reference to your custom JS file for dynamic content loading -->
+    <script src="script.js" defer></script> <!-- Reference to your custom JS file -->
 </head>
 
 <body>
@@ -21,20 +21,13 @@
             </div>
             <ul class="navbar__menu">
                 <li class="navbar__item">
-                    <a href="/" class="navbar__links" id="home-link">
-                        Home
-                    </a>
+                    <a href="/" class="navbar__links" id="home-link">Home</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="/signin.html" class="navbar__links">
-                        Logs
-                    </a>
+                    <a href="#" class="navbar__links" id="logs-link">Logs</a> <!-- Modified link -->
                 </li>
                 <li class="navbar__btn">
-                    <!-- Sign-in button, will be handled via JavaScript -->
-                    <button class="button" id="signInBtn">
-                        Sign In
-                    </button>
+                    <button class="button" id="signInBtn">Sign In</button>
                 </li>
             </ul>
         </div>
@@ -72,16 +65,11 @@
     </div>
 
     <!-- User Info -->
-    <div id="userInfo">
-        <!-- Dynamically show user info after sign-in -->
-    </div>
+    <div id="userInfo"></div> <!-- Dynamically show user info after sign-in -->
 
     <!-- Content Container for dynamic loading -->
-    <div id="content-container">
-        <!-- Content will be injected here dynamically -->
-    </div>
+    <div id="content-container"></div> <!-- Content will be injected here dynamically -->
 
-    <script src="script.js"></script> <!-- Reference to your script.js -->
 </body>
 
 </html>
