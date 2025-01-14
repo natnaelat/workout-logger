@@ -12,8 +12,9 @@ const cognitoAuthConfig = {
 const userManager = new UserManager(cognitoAuthConfig);
 
 function App() {
+  // Function to handle SignIn redirect
   const handleSignIn = () => {
-    userManager.signinRedirect();
+    userManager.signinRedirect(); // Triggers Cognito sign-in redirect
   };
 
   return (
@@ -40,7 +41,12 @@ function App() {
               </a>
             </li>
             <li className="navbar__btn">
-              <button className="button" id="signInBtn" onClick={handleSignIn}>
+              <button
+                className="button"
+                id="signInBtn"
+                onClick={handleSignIn}
+                style={{ cursor: "pointer" }}
+              >
                 Sign In
               </button>
             </li>
