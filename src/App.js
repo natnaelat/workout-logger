@@ -1,45 +1,69 @@
-// App.js
-
-import { useAuth } from "react-oidc-context";
+import React, { useState, useEffect } from "react";
+import { Auth } from "aws-amplify";
 
 function App() {
-  const auth = useAuth();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const signOutRedirect = () => {
-    const clientId = "6961qcc5ik6qg1rt0ucpa5vp8p";
-    const logoutUri = "https://main.d2fzktvpiprrqk.amplifyapp.com/";
-    const cognitoDomain =
-      "https://us-east-1alnpjkjtj.auth.us-east-1.amazoncognito.com";
-    window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(
-      logoutUri
-    )}`;
+  // Check the current session on component mount
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const currentUser = await Auth.currentAuthenticatedUser();
+        setUser(currentUser);
+      } catch (err) {
+        setError("User not authenticated");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkUser();
+  }, []);
+
+  // Sign out logic
+  const signOut = async () => {
+    try {
+      await Auth.signOut();
+      setUser(null);
+    } catch (err) {
+      console.error("Error signing out", err);
+    }
   };
 
-  if (auth.isLoading) {
+  // Sign in redirect logic
+  const signIn = async () => {
+    try {
+      await Auth.federatedSignIn();
+    } catch (err) {
+      setError("Error during sign-in");
+    }
+  };
+
+  // Loading, error, or authenticated user view
+  if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (auth.error) {
-    return <div>Encountering error... {auth.error.message}</div>;
+  if (error) {
+    return <div>Error: {error}</div>;
   }
 
-  if (auth.isAuthenticated) {
+  // Show authenticated user details or sign-in button
+  if (user) {
     return (
       <div>
-        <pre> Hello: {auth.user?.profile.email} </pre>
-        <pre> ID Token: {auth.user?.id_token} </pre>
-        <pre> Access Token: {auth.user?.access_token} </pre>
-        <pre> Refresh Token: {auth.user?.refresh_token} </pre>
-
-        <button onClick={() => auth.removeUser()}>Sign out</button>
+        <pre>Hello: {user.username}</pre>
+        <pre>Email: {user.attributes.email}</pre>
+        <button onClick={signOut}>Sign out</button>
       </div>
     );
   }
 
   return (
     <div>
-      <button onClick={() => auth.signinRedirect()}>Sign in</button>
-      <button onClick={() => signOutRedirect()}>Sign out</button>
+      <button onClick={signIn}>Sign in with AWS Cognito</button>
     </div>
   );
 }
