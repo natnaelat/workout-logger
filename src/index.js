@@ -2,7 +2,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App"; // Ensure this matches the path to your App component
-
 import "./index.css";
 import { AuthProvider } from "react-oidc-context";
 
