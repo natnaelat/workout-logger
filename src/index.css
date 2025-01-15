@@ -111,6 +111,7 @@ code {
   border-radius: 4px;
   background: #0e3c91;
   color: #fff;
+  pointer-events: auto;
 }
 
 
