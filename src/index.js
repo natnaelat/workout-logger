@@ -3,6 +3,7 @@ import React from "react"; // Import React
 import ReactDOM from "react-dom/client"; // Import ReactDOM
 import { AuthProvider } from "react-oidc-context";
 import App from "./App"; // Import your App component
+import "./index.css";
 
 const cognitoAuthConfig = {
   authority: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_0hhLZZ5N4",
