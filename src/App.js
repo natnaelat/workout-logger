@@ -14,6 +14,10 @@ function App() {
     )}`;
   };
 
+  const handleSignIn = () => {
+    auth.signinRedirect();
+  };
+
   if (auth.isLoading) {
     return <div>Loading...</div>;
   }
@@ -70,9 +74,9 @@ function App() {
           <div className="main__content">
             <h1>Improve Your Health.</h1>
             <h2>Reach Your Goals.</h2>
-            <a href="/signup.html" className="main__btn">
+            <button className="main__btn" onClick={handleSignIn}>
               Get Started
-            </a>
+            </button>
           </div>
           <div className="main__img--container">
             <img
@@ -91,16 +95,16 @@ function App() {
           <div className="services__card">
             <h2>See Change</h2>
             <p>Start Today</p>
-            <a href="/signup.html" className="button">
+            <button className="button get-started" onClick={handleSignIn}>
               Get Started
-            </a>
+            </button>
           </div>
           <div className="services__card">
             <h2>Are you Ready?</h2>
             <p>Take the leap</p>
-            <a href="/signup.html" className="button">
+            <button className="button get-started" onClick={handleSignIn}>
               Get Started
-            </a>
+            </button>
           </div>
         </div>
       </div>
