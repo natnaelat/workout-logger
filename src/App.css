@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Kumbh Sans', sans-serif;
+  border: none !important;
 }
 
 .navbar {
@@ -16,6 +17,15 @@
   top: 0;
   z-index: 999;
 }
+
+/* Reset any unwanted styling on the Router */
+.router {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  outline: none !important;
+}
+
 
 .navbar__container {
   display: flex;

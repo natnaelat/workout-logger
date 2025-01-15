@@ -30,7 +30,6 @@ function App() {
 
   return (
     <Router>
-      {" "}
       {/* Wrap the entire app with Router to enable routing */}
       <div className="App">
         {/* Navigation Bar */}
@@ -56,9 +55,7 @@ function App() {
                   className="navbar__links"
                   id="exercise-link"
                 >
-                  {" "}
-                  {/* Added link to the exercise page */}
-                  Exercise Manager
+                  Logs
                 </Link>
               </li>
               <li className="navbar__btn">
@@ -79,61 +76,60 @@ function App() {
           </div>
         </nav>
 
-        {/* Main Section */}
-        <div className="main">
-          <div className="main__container">
-            <div className="main__content">
-              <h1>Improve Your Health.</h1>
-              <h2>Reach Your Goals.</h2>
-              <button className="main__btn" onClick={handleSignIn}>
-                Get Started
-              </button>
-            </div>
-            <div className="main__img--container">
-              <img
-                src="/images/pic1.svg"
-                alt="Workout illustration"
-                id="main__img"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Services Section */}
-        <div className="services">
-          <h1>Change Your Life Today</h1>
-          <div className="services__container">
-            <div className="services__card">
-              <h2>See Change</h2>
-              <p>Start Today</p>
-              <button className="button get-started" onClick={handleSignIn}>
-                Get Started
-              </button>
-            </div>
-            <div className="services__card">
-              <h2>Are you Ready?</h2>
-              <p>Take the leap</p>
-              <button className="button get-started" onClick={handleSignIn}>
-                Get Started
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* User Info Section */}
-        {auth.isAuthenticated && (
-          <div id="userInfo">
-            <pre>Hello: {auth.user?.profile.email}</pre>
-            <pre>ID Token: {auth.user?.id_token}</pre>
-            <pre>Access Token: {auth.user?.access_token}</pre>
-            <pre>Refresh Token: {auth.user?.refresh_token}</pre>
-          </div>
-        )}
-
         {/* Routes for the app */}
         <Routes>
-          <Route path="/exercise" element={<ExercisePage />} />{" "}
-          {/* Updated to use "element" instead of "component" */}
+          {/* Only show Home page if the path is not '/exercise' */}
+          <Route
+            path="/"
+            element={
+              <>
+                <div className="main">
+                  <div className="main__container">
+                    <div className="main__content">
+                      <h1>Improve Your Health.</h1>
+                      <h2>Reach Your Goals.</h2>
+                      <button className="main__btn" onClick={handleSignIn}>
+                        Get Started
+                      </button>
+                    </div>
+                    <div className="main__img--container">
+                      <img
+                        src="/images/pic1.svg"
+                        alt="Workout illustration"
+                        id="main__img"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="services">
+                  <h1>Change Your Life Today</h1>
+                  <div className="services__container">
+                    <div className="services__card">
+                      <h2>See Change</h2>
+                      <p>Start Today</p>
+                      <button
+                        className="button get-started"
+                        onClick={handleSignIn}
+                      >
+                        Get Started
+                      </button>
+                    </div>
+                    <div className="services__card">
+                      <h2>Are you Ready?</h2>
+                      <p>Take the leap</p>
+                      <button
+                        className="button get-started"
+                        onClick={handleSignIn}
+                      >
+                        Get Started
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </>
+            }
+          />
+          <Route path="/exercise" element={<ExercisePage />} />
         </Routes>
       </div>
     </Router>
