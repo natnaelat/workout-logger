@@ -4,76 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Track your workouts, improve your health, and reach your fitness goals with the Workout Tracker app.">
     <title>Workout Tracker</title>
-    <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/e29adbe2a0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="navbar__container">
-            <a href="/" id="navbar__logo">
-                <i class="fas fa-dumbbell" aria-hidden="true"></i>
-                <span>Workout Tracker</span>
-            </a>
-            <div class="navbar__toggle" id="mobile-menu" aria-label="Toggle navigation menu" tabindex="0">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a href="/" class="navbar__links" id="home-link">Home</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="#" class="navbar__links" id="logs-link">Logs</a>
-                </li>
-                <li class="navbar__btn">
-                    <button class="button" id="signInBtn">Sign In</button>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Main Section -->
-    <div class="main">
-        <div class="main__container">
-            <div class="main__content">
-                <h1>Improve Your Health.</h1>
-                <h2>Reach Your Goals.</h2>
-                <a href="/signup.html" class="main__btn">Get Started</a>
-            </div>
-            <div class="main__img--container">
-                <img src="/images/pic1.svg" alt="Illustration of a person working out" id="main__img">
-            </div>
-        </div>
-    </div>
-
-    <!-- Services Section -->
-    <div class="services">
-        <h1>Change Your Life Today</h1>
-        <div class="services__container">
-            <div class="services__card">
-                <h2>See Change</h2>
-                <p>Start Today</p>
-                <a href="/signup.html" class="button">Get Started</a>
-            </div>
-            <div class="services__card">
-                <h2>Are you Ready?</h2>
-                <p>Take the leap</p>
-                <a href="/signup.html" class="button">Get Started</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Dynamic Content Containers -->
-    <div id="userInfo" aria-live="polite"></div>
-    <div id="content-container"></div>
-
-    <script src="script.js"></script>
+    <div id="root"></div> <!-- React will render here -->
+    <script src="bundle.js"></script> <!-- Your React bundle -->
 </body>
 
 </html>
