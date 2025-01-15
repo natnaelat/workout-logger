@@ -6,7 +6,7 @@ function App() {
   const auth = useAuth();
 
   const signOutRedirect = () => {
-    const clientId = "12q7uj83n3hppb93ram0s5t6bk";
+    const clientId = "5cin4j2av72fvhg3q19k62et5a";
     const logoutUri = "<logout uri>";
     const cognitoDomain = "https://<user pool domain>";
     window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(
