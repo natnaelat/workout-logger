@@ -1,18 +1,11 @@
 import React from "react";
 import { useAuth } from "react-oidc-context";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Link,
-  useNavigate,
-} from "react-router-dom"; // Updated imports
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // Updated imports
 import "./App.css"; // Assuming your styles are in App.css
 import ExercisePage from "./exercisepage"; // Import the ExercisePage component
 
 function App() {
   const auth = useAuth();
-  const navigate = useNavigate(); // Using useNavigate hook for programmatic navigation
 
   const signOutRedirect = () => {
     const clientId = "5cin4j2av72fvhg3q19k62et5a";
@@ -30,15 +23,6 @@ function App() {
 
   const handleSignIn = () => {
     auth.signinRedirect();
-  };
-
-  const handleLogsClick = () => {
-    // Check if the user is authenticated before redirecting
-    if (auth.isAuthenticated) {
-      navigate("/exercise"); // Redirect to /exercise page
-    } else {
-      navigate("/"); // Redirect to the homepage
-    }
   };
 
   if (auth.isLoading) {
@@ -71,13 +55,13 @@ function App() {
                 </a>
               </li>
               <li className="navbar__item">
-                <button
+                <Link
+                  to="/exercise"
                   className="navbar__links"
                   id="exercise-link"
-                  onClick={handleLogsClick} // Use the handleLogsClick function
                 >
                   Logs
-                </button>
+                </Link>
               </li>
               <li className="navbar__btn">
                 {auth.isAuthenticated ? (
