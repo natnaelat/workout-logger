@@ -1,90 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workout Tracker</title>
-    <script src="https://kit.fontawesome.com/e29adbe2a0.js" crossorigin="anonymous"></script>
-    <!-- Include the AWS Amplify script for authentication -->
-    <script src="https://cdn.jsdelivr.net/npm/aws-amplify@4.3.4/dist/aws-amplify.min.js"></script>
-    <!-- Include the App.js that contains your authentication logic -->
-    <script src="app.js" defer></script>
-</head>
-
-<body>
-    <nav class="navbar">
-        <div class="navbar__container">
-            <a href="/" id="navbar__logo"><i class="fas fa-dumbbell"></i>Workout Tracker</a>
-            <div class="navbar__toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a href="/" class="navbar__links" id="home-link">Home</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="#" class="navbar__links" id="logs-link">Logs</a>
-                </li>
-                <li class="navbar__btn">
-                    <!-- Updated the button to call the signinRedirect() function -->
-                    <button class="button" id="signInBtn" onclick="signIn()">Sign In</button>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="main">
-        <div class="main__container">
-            <div class="main__content">
-                <h1>Improve Your Health.</h1>
-                <h2>Reach Your Goals.</h2>
-                <button class="main__btn"><a href="/signup.html">Get Started</a></button>
-            </div>
-            <div class="main__img--container">
-                <img src="/images/pic1.svg" alt="pic" id="main__img">
-            </div>
-        </div>
-    </div>
-
-    <div class="services">
-        <h1>Change Your Life Today</h1>
-        <div class="services__container">
-            <div class="services__card">
-                <h2>See Change</h2>
-                <p>Start Today</p>
-                <button><a href="/signup.html">Get Started</a></button>
-            </div>
-            <div class="services__card">
-                <h2>Are you Ready?</h2>
-                <p>Take the leap</p>
-                <button><a href="/signup.html">Get Started</a></button>
-            </div>
-        </div>
-    </div>
-
-    <div id="userInfo"></div>
-    <div id="content-container"></div>
-
-    <!-- Include the AWS Amplify configuration script -->
-    <script>
-        // Make sure AWS Amplify is configured correctly in App.js or separately here
-        const awsConfig = {
-            Auth: {
-                region: 'your-region',  // e.g., 'us-east-1'
-                userPoolId: 'your-user-pool-id',
-                userPoolWebClientId: 'your-web-client-id',
-            }
-        };
-        AWS.config.update(awsConfig);
-        
-        // SignIn function that triggers the signinRedirect from App.js
-        function signIn() {
-            auth.signinRedirect();
-        }
-    </script>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>React App</title>
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    <script src="%PUBLIC_URL%/manifest.json" type="application/json"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
