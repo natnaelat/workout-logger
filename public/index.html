@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Tracker</title>
     <script src="https://kit.fontawesome.com/e29adbe2a0.js" crossorigin="anonymous"></script>
+    <!-- Include the AWS Amplify script for authentication -->
+    <script src="https://cdn.jsdelivr.net/npm/aws-amplify@4.3.4/dist/aws-amplify.min.js"></script>
+    <!-- Include the App.js that contains your authentication logic -->
+    <script src="app.js" defer></script>
 </head>
-
 
 <body>
     <nav class="navbar">
@@ -27,12 +29,12 @@
                     <a href="#" class="navbar__links" id="logs-link">Logs</a>
                 </li>
                 <li class="navbar__btn">
-                    <button class="button" id="signInBtn">Sign In</button>
+                    <!-- Updated the button to call the signinRedirect() function -->
+                    <button class="button" id="signInBtn" onclick="signIn()">Sign In</button>
                 </li>
             </ul>
         </div>
     </nav>
-
 
     <div class="main">
         <div class="main__container">
@@ -46,7 +48,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="services">
         <h1>Change Your Life Today</h1>
@@ -64,13 +65,26 @@
         </div>
     </div>
 
-
     <div id="userInfo"></div>
     <div id="content-container"></div>
+
+    <!-- Include the AWS Amplify configuration script -->
+    <script>
+        // Make sure AWS Amplify is configured correctly in App.js or separately here
+        const awsConfig = {
+            Auth: {
+                region: 'your-region',  // e.g., 'us-east-1'
+                userPoolId: 'your-user-pool-id',
+                userPoolWebClientId: 'your-web-client-id',
+            }
+        };
+        AWS.config.update(awsConfig);
+        
+        // SignIn function that triggers the signinRedirect from App.js
+        function signIn() {
+            auth.signinRedirect();
+        }
+    </script>
 </body>
 
-
 </html>
-
-
-
