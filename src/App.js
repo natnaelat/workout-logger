@@ -9,12 +9,16 @@ function App() {
 
   const signOutRedirect = () => {
     const clientId = "5cin4j2av72fvhg3q19k62et5a";
-    const logoutUri = "https://main.d2fzktvpiprrqk.amplifyapp.com/";
+    const logoutUri = "https://main.d2fzktvpiprrqk.amplifyapp.com/"; // Your logout redirect URI
     const cognitoDomain =
       "https://us-east-10hhlzz5n4.auth.us-east-1.amazoncognito.com";
-    window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(
-      logoutUri
-    )}`;
+
+    // Sign out from local app and redirect to Cognito logout
+    auth.removeUser().then(() => {
+      window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(
+        logoutUri
+      )}`;
+    });
   };
 
   const handleSignIn = () => {
@@ -61,7 +65,9 @@ function App() {
               </li>
               <li className="navbar__btn">
                 {auth.isAuthenticated ? (
-                  <button className="button" onClick={() => auth.removeUser()}>
+                  <button className="button" onClick={signOutRedirect}>
+                    {" "}
+                    {/* Update to use signOutRedirect */}
                     Sign Out
                   </button>
                 ) : (
