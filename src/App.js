@@ -8,10 +8,10 @@ function App() {
   const auth = useAuth();
 
   const signOutRedirect = () => {
-    const clientId = "1d3ouichhlsmuldvukp7u0altg";
-    const logoutUri = "https://main.d3q0mk338bbbko.amplifyapp.com/";
+    const clientId = "5cin4j2av72fvhg3q19k62et5a";
+    const logoutUri = "https://main.d2fzktvpiprrqk.amplifyapp.com/";
     const cognitoDomain =
-      "https://us-east-1hq49bqz4c.auth.us-east-1.amazoncognito.com";
+      "https://us-east-10hhlzz5n4.auth.us-east-1.amazoncognito.com";
 
     // Sign out from local app and redirect to Cognito logout
     auth.removeUser().then(() => {
