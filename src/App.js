@@ -1,11 +1,18 @@
 import React from "react";
 import { useAuth } from "react-oidc-context";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // Updated imports
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  useNavigate,
+} from "react-router-dom"; // Added useNavigate
 import "./App.css"; // Assuming your styles are in App.css
 import ExercisePage from "./exercisepage"; // Import the ExercisePage component
 
 function App() {
   const auth = useAuth();
+  const navigate = useNavigate(); // Added to handle navigation programmatically
 
   const signOutRedirect = () => {
     const clientId = "5cin4j2av72fvhg3q19k62et5a";
@@ -25,6 +32,15 @@ function App() {
     auth.signinRedirect();
   };
 
+  // Redirect to exercise page only if authenticated
+  const handleLogsClick = () => {
+    if (auth.isAuthenticated) {
+      navigate("/exercise");
+    } else {
+      navigate("/"); // Redirect to home if not signed in
+    }
+  };
+
   if (auth.isLoading) {
     return <div>Loading...</div>;
   }
@@ -35,7 +51,6 @@ function App() {
 
   return (
     <Router>
-      {/* Wrap the entire app with Router to enable routing */}
       <div className="App">
         {/* Navigation Bar */}
         <nav className="navbar">
@@ -55,19 +70,17 @@ function App() {
                 </a>
               </li>
               <li className="navbar__item">
-                <Link
-                  to="/exercise"
+                <button
                   className="navbar__links"
                   id="exercise-link"
+                  onClick={handleLogsClick} // Added onClick for Logs button
                 >
                   Logs
-                </Link>
+                </button>
               </li>
               <li className="navbar__btn">
                 {auth.isAuthenticated ? (
                   <button className="button" onClick={signOutRedirect}>
-                    {" "}
-                    {/* Update to use signOutRedirect */}
                     Sign Out
                   </button>
                 ) : (
@@ -85,7 +98,6 @@ function App() {
 
         {/* Routes for the app */}
         <Routes>
-          {/* Only show Home page if the path is not '/exercise' */}
           <Route
             path="/"
             element={
