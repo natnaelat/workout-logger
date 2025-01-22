@@ -1,19 +1,16 @@
-// src/ExercisePage.js
 import React, { useState } from "react";
-import "./exercisepage.css"; // Import your existing CSS
+import { useNavigate } from "react-router-dom";
+import "./exercisepage.css";
 
 const ExercisePage = () => {
   const [exerciseName, setExerciseName] = useState("");
   const [exerciseList, setExerciseList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Add the new exercise to the list
     setExerciseList([...exerciseList, exerciseName]);
-
-    // Clear the input field after submission
     setExerciseName("");
   };
 
@@ -22,8 +19,7 @@ const ExercisePage = () => {
   };
 
   const handleRowClick = (exercise) => {
-    // Navigate to the workout tracker (you may want to use react-router for navigation)
-    window.location.href = `/log?exercise=${encodeURIComponent(exercise)}`;
+    navigate(`/log?exercise=${encodeURIComponent(exercise)}`);
   };
 
   const filteredExercises = exerciseList.filter((exercise) =>
@@ -34,7 +30,6 @@ const ExercisePage = () => {
     <div className="exercise-page">
       <h1>Exercise Manager</h1>
 
-      {/* Form to add exercise */}
       <form onSubmit={handleSubmit}>
         <label htmlFor="exercise">Add Exercise</label>
         <input
@@ -48,7 +43,6 @@ const ExercisePage = () => {
         <button type="submit">Add Exercise</button>
       </form>
 
-      {/* Search Bar */}
       <input
         type="text"
         id="searchBar"

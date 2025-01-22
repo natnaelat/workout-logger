@@ -1,8 +1,9 @@
 import React from "react";
 import { useAuth } from "react-oidc-context";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // Updated imports
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"; // Updated imports
 import "./App.css"; // Assuming your styles are in App.css
-import ExercisePage from "./exercisepage"; // Import the ExercisePage component
+import ExercisePage from "./components/ExercisePage"; // Import the ExercisePage component
+import LogPage from "./components/LogPage"; // Import the LogPage component
 
 function App() {
   const auth = useAuth();
@@ -35,7 +36,6 @@ function App() {
 
   return (
     <Router>
-      {/* Wrap the entire app with Router to enable routing */}
       <div className="App">
         {/* Navigation Bar */}
         <nav className="navbar">
@@ -50,13 +50,13 @@ function App() {
             </div>
             <ul className="navbar__menu">
               <li className="navbar__item">
-                <a href="/" className="navbar__links" id="home-link">
+                <Link to="/" className="navbar__links" id="home-link">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="navbar__item">
                 <Link
-                  onClick={() => auth.signinRedirect()}
+                  to="/exercise"
                   className="navbar__links"
                   id="exercise-link"
                 >
@@ -66,8 +66,6 @@ function App() {
               <li className="navbar__btn">
                 {auth.isAuthenticated ? (
                   <button className="button" onClick={signOutRedirect}>
-                    {" "}
-                    {/* Update to use signOutRedirect */}
                     Sign Out
                   </button>
                 ) : (
@@ -85,7 +83,7 @@ function App() {
 
         {/* Routes for the app */}
         <Routes>
-          {/* Only show Home page if the path is not '/exercise' */}
+          {/* Home Route */}
           <Route
             path="/"
             element={
@@ -136,7 +134,10 @@ function App() {
               </>
             }
           />
+          {/* Exercise Page Route */}
           <Route path="/exercise" element={<ExercisePage />} />
+          {/* Log Page Route */}
+          <Route path="/log" element={<LogPage />} />
         </Routes>
       </div>
     </Router>
