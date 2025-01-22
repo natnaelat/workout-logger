@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth } from "react-oidc-context";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"; // Updated imports
 import "./App.css"; // Assuming your styles are in App.css
-import ExercisePage from "./exercisePage"; // Import the ExercisePage component
+import ExercisePage from "./exercisepage"; // Import the ExercisePage component
 import LogPage from "./loggerpage"; // Import the LogPage component
 
 function App() {
