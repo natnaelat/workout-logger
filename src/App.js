@@ -6,33 +6,33 @@ import ExercisePage from "./exercisepage"; // Import the ExercisePage component
 import LogPage from "./loggerpage"; // Import the LogPage component
 
 function App() {
-  const auth = useAuth();
+  // const auth = useAuth();
 
-  const signOutRedirect = () => {
-    // const clientId = "1d3ouichhlsmuldvukp7u0altg";
-    // const logoutUri = "https://main.d3q0mk338bbbko.amplifyapp.com/";
-    // const cognitoDomain =
-    //   "https://us-east-1hq49bqz4c.auth.us-east-1.amazoncognito.com";
+  // const signOutRedirect = () => {
+  //   // const clientId = "1d3ouichhlsmuldvukp7u0altg";
+  //   // const logoutUri = "https://main.d3q0mk338bbbko.amplifyapp.com/";
+  //   // const cognitoDomain =
+  //   //   "https://us-east-1hq49bqz4c.auth.us-east-1.amazoncognito.com";
 
-    // Sign out from local app and redirect to Cognito logout
-    auth.removeUser().then(() => {
-      window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(
-        logoutUri
-      )}`;
-    });
-  };
+  //   // Sign out from local app and redirect to Cognito logout
+  //   auth.removeUser().then(() => {
+  //     window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(
+  //       logoutUri
+  //     )}`;
+  //   });
+  // };
 
-  const handleSignIn = () => {
-    auth.signinRedirect();
-  };
+  // const handleSignIn = () => {
+  //   auth.signinRedirect();
+  // };
 
-  if (auth.isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (auth.isLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (auth.error) {
-    return <div>Encountering error... {auth.error.message}</div>;
-  }
+  // if (auth.error) {
+  //   return <div>Encountering error... {auth.error.message}</div>;
+  // }
 
   return (
     <Router>
