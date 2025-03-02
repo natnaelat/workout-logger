@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./loggerpage.css";
-
+//backs
 const LogPage = () => {
   const location = useLocation();
   const exerciseName =
